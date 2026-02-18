@@ -1,0 +1,16 @@
+{
+  "name": "ghostinthehash",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "web",
+    "api"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm --prefix api run dev\" \"npm --prefix web run dev\"",
+    "build": "npm --prefix api run build && npm --prefix web run build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

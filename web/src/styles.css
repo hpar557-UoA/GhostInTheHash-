@@ -1,0 +1,769 @@
+/* GhostInTheHash | "LOGS DON'T LIE." — Harsh Pardeshi */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: #07080b;
+  color: #fff;
+  font-family: Inter, Segoe UI, system-ui, sans-serif;
+}
+
+.boot-shell {
+  text-shadow: 0 0 18px rgba(24, 255, 109, 0.12);
+}
+
+.boot-caret {
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+.boot-caret-blink {
+  animation: bootCaret 0.85s steps(1, end) infinite;
+}
+
+.boot-flicker {
+  animation: bootFlicker 3.6s linear infinite;
+}
+
+@keyframes bootCaret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes bootFlicker {
+  0%,
+  100% {
+    opacity: 0.95;
+  }
+  7% {
+    opacity: 0.75;
+  }
+  8% {
+    opacity: 0.96;
+  }
+  62% {
+    opacity: 0.86;
+  }
+  63% {
+    opacity: 0.98;
+  }
+}
+
+.creator-credit {
+  user-select: none;
+}
+
+.cv-auto {
+  content-visibility: auto;
+  contain: layout paint;
+  contain-intrinsic-size: 520px;
+}
+
+.app-shell {
+  background: #07080b;
+  isolation: isolate;
+}
+
+.app-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  background: none;
+  mix-blend-mode: normal;
+  animation: none;
+}
+
+.scanner-panel {
+  transition: box-shadow 220ms ease, transform 220ms ease;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.06), transparent 44%),
+    radial-gradient(circle at 70% 30%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 42%),
+    rgba(14, 17, 23, 0.78);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 28px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.scanner-panel:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 48px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.scanner-panel::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 1rem;
+  pointer-events: none;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  opacity: 0.9;
+  mask-image: radial-gradient(circle at 50% 20%, black 0%, black 55%, transparent 78%);
+}
+
+.scanner-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  pointer-events: none;
+  background: none;
+  transform: none;
+  opacity: 0;
+}
+
+.scanner-panel:hover::before {
+  animation: none;
+}
+
+
+.logo-flicker {
+  animation: flicker 3s linear infinite;
+  text-shadow:
+    0 0 12px color-mix(in srgb, var(--accent) 40%, transparent),
+    0 0 30px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.75;
+  }
+  94% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.85;
+  }
+}
+
+.fog-layer {
+  pointer-events: none;
+  background: radial-gradient(circle at 20% 30%, rgba(124, 77, 255, 0.18), transparent 38%),
+    radial-gradient(circle at 80% 70%, rgba(24, 255, 109, 0.22), transparent 36%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.06), transparent 44%);
+  filter: blur(24px);
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+.neon-layer {
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 15%, color-mix(in srgb, var(--accent) 28%, transparent), transparent 42%),
+    radial-gradient(circle at 85% 80%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 46%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, color-mix(in srgb, var(--accent) 14%, transparent) 35%, rgba(0, 0, 0, 0) 70%);
+  mix-blend-mode: screen;
+  filter: blur(18px) saturate(1.05);
+  background-size: 140% 140%, 160% 160%, 220% 100%;
+  background-position: 0% 0%, 100% 100%, -120% 0;
+  animation: neonSweep 7.2s ease-in-out infinite;
+}
+
+.noise-layer {
+  animation: noiseShift 2.8s steps(2, end) infinite;
+}
+
+@keyframes noiseShift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(-1.5%, 0.8%, 0);
+  }
+  50% {
+    transform: translate3d(1.2%, -0.6%, 0);
+  }
+  75% {
+    transform: translate3d(-0.6%, -1.2%, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(-2%, -1%, 0) scale(1.02);
+  }
+  to {
+    transform: translate3d(2%, 1%, 0) scale(1.08);
+  }
+}
+
+.noise-layer {
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+}
+
+.vignette-layer {
+  pointer-events: none;
+  z-index: 2;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(0, 0, 0, 0) 52%, rgba(0, 0, 0, 0.72) 100%),
+    radial-gradient(circle at 50% 110%, rgba(24, 255, 109, 0.07), transparent 46%);
+}
+
+.ghost-layer {
+  pointer-events: none;
+  mix-blend-mode: screen;
+  filter: blur(18px) saturate(1.1);
+  background:
+    radial-gradient(circle at 18% 62%, rgba(255, 255, 255, 0.07), transparent 26%),
+    radial-gradient(circle at 22% 66%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 34%),
+    radial-gradient(circle at 74% 42%, rgba(255, 255, 255, 0.05), transparent 30%),
+    radial-gradient(circle at 78% 46%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 38%),
+    radial-gradient(circle at 46% 18%, rgba(255, 255, 255, 0.04), transparent 28%);
+  animation: hauntDrift 22s ease-in-out infinite alternate;
+}
+
+@keyframes hauntDrift {
+  0% {
+    transform: translate3d(-2%, 1%, 0) scale(1.02);
+  }
+  35% {
+    transform: translate3d(1.5%, -0.5%, 0) scale(1.06);
+  }
+  70% {
+    transform: translate3d(-0.5%, -1.8%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(2.2%, 1.2%, 0) scale(1.08);
+  }
+}
+
+.matrix-layer {
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.48;
+  mix-blend-mode: screen;
+  filter: none;
+  will-change: transform;
+}
+
+.ghost-quote {
+  position: relative;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.06),
+    0 0 18px color-mix(in srgb, var(--accent) 22%, transparent);
+  animation: quoteFlicker 4.4s linear infinite;
+}
+
+.ghost-quote::after {
+  content: "";
+  position: absolute;
+  inset: -2px 0 -2px 0;
+  pointer-events: none;
+  opacity: 0.10;
+  background: linear-gradient(90deg, rgba(255, 0, 80, 0.18), transparent 35%, rgba(0, 180, 255, 0.16));
+  mix-blend-mode: screen;
+  filter: blur(6px);
+}
+
+@keyframes quoteFlicker {
+  0%,
+  100% {
+    opacity: 0.92;
+    transform: translate3d(0, 0, 0);
+  }
+  8% {
+    opacity: 0.78;
+  }
+  9% {
+    opacity: 0.95;
+    transform: translate3d(-0.5px, 0, 0);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  11% {
+    opacity: 0.96;
+    transform: translate3d(0.7px, 0, 0);
+  }
+  62% {
+    opacity: 0.86;
+  }
+  63% {
+    opacity: 0.98;
+  }
+}
+
+.header-sheen {
+  position: relative;
+}
+
+.header-sheen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 0.75rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent 40%);
+  opacity: 0.8;
+  mask-image: radial-gradient(circle at 15% 15%, black 0%, black 55%, transparent 78%);
+}
+
+.report-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.report-shell::before {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 1rem;
+  opacity: 0.75;
+  background:
+    linear-gradient(to right, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0)) top left / 34px 2px no-repeat,
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0)) top left / 2px 34px no-repeat,
+    linear-gradient(to left, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0)) top right / 34px 2px no-repeat,
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0)) top right / 2px 34px no-repeat,
+    linear-gradient(to right, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0)) bottom left / 34px 2px no-repeat,
+    linear-gradient(to top, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0)) bottom left / 2px 34px no-repeat,
+    linear-gradient(to left, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0)) bottom right / 34px 2px no-repeat,
+    linear-gradient(to top, rgba(255, 255, 255, 0.20), rgba(255, 255, 255, 0.0)) bottom right / 2px 34px no-repeat;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--accent) 18%, transparent));
+  animation: hudCornersFlicker 5.6s linear infinite;
+}
+
+.report-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.0));
+  mask-image: radial-gradient(circle at 50% 30%, black 0%, black 55%, transparent 85%);
+}
+
+.hud-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.hud-layer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.52;
+  background:
+    radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 45%),
+    radial-gradient(circle at 86% 78%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 50%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, color-mix(in srgb, var(--accent) 22%, transparent) 32%, rgba(0, 0, 0, 0) 62%);
+  background-size: 140% 140%, 160% 160%, 240% 100%;
+  background-position: 0% 0%, 100% 100%, -140% 0;
+  mix-blend-mode: screen;
+  filter: blur(10px) saturate(1.12);
+  mask-image: radial-gradient(circle at 50% 30%, black 0%, black 62%, transparent 92%);
+  animation: neonSweep 6.4s ease-in-out infinite;
+}
+
+.hud-layer::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  border-radius: 1rem;
+  opacity: 0.9;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.0)),
+    linear-gradient(90deg, rgba(0, 0, 0, 0), color-mix(in srgb, var(--accent) 18%, transparent), rgba(0, 0, 0, 0));
+  background-size: 220% 100%, 260% 100%;
+  background-position: -120% 0, 140% 0;
+  background-repeat: no-repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 40px color-mix(in srgb, var(--accent) 10%, transparent);
+  mask-image:
+    linear-gradient(#000, #000),
+    linear-gradient(#000, #000);
+  mask-size: 100% 100%, 100% 100%;
+  mask-position: 0 0, 0 0;
+  mask-repeat: no-repeat;
+  filter: blur(0.2px);
+  animation: none;
+}
+
+.report-title {
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.05),
+    0 0 18px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.report-title-flicker {
+  animation: reportTitleFlicker 3.8s linear infinite;
+}
+
+.report-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.10),
+    0 0 12px color-mix(in srgb, var(--accent) 50%, transparent);
+}
+
+.report-dot-pulse {
+  animation: reportDotPulse 1.2s ease-in-out infinite;
+}
+
+.report-effects {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.report-effects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.06), transparent 38%),
+    radial-gradient(circle at 85% 35%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 44%);
+  mix-blend-mode: screen;
+  background-size: 140% 140%;
+  animation: none;
+}
+
+.report-effects::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: none;
+  mask-image: none;
+  animation: none;
+}
+
+.report-shell > :not(.report-effects):not(.hud-layer) {
+  position: relative;
+  z-index: 1;
+}
+
+.report-shell .matrix-layer {
+  z-index: 0;
+  opacity: 0.18;
+}
+
+.reduce-motion .report-effects::before,
+.reduce-motion .report-effects::after {
+  animation: none;
+}
+
+.reduce-motion .hud-layer::before,
+.reduce-motion .hud-layer::after {
+  animation: none;
+}
+
+.reduce-motion .neon-layer {
+  animation: none;
+}
+
+.reduce-motion .report-shell::before {
+  animation: none;
+}
+
+.reduce-motion .matrix-layer {
+  display: none;
+}
+
+@keyframes reportScan {
+  0% {
+    transform: translate3d(0, -6%, 0);
+    opacity: 0.06;
+  }
+  50% {
+    opacity: 0.11;
+  }
+  100% {
+    transform: translate3d(0, 6%, 0);
+    opacity: 0.06;
+  }
+}
+
+@keyframes reportDrift {
+  0% {
+    background-position: 0% 20%;
+    filter: blur(0px);
+  }
+  100% {
+    background-position: 100% 80%;
+    filter: blur(0.4px);
+  }
+}
+
+@keyframes reportGlitch {
+  0% {
+    opacity: 0.07;
+  }
+  7% {
+    opacity: 0.14;
+  }
+  8% {
+    opacity: 0.06;
+  }
+  49% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.18;
+  }
+  52% {
+    opacity: 0.07;
+  }
+  100% {
+    opacity: 0.09;
+  }
+}
+
+@keyframes hudGrid {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.20;
+  }
+  50% {
+    transform: translate3d(-1.2%, 1.2%, 0);
+    opacity: 0.26;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.20;
+  }
+}
+
+@keyframes hudSweep {
+  0% {
+    background-position: -140% 0, 160% 0;
+    opacity: 0.0;
+  }
+  18% {
+    opacity: 0.75;
+  }
+  50% {
+    background-position: 120% 0, -120% 0;
+    opacity: 0.45;
+  }
+  100% {
+    background-position: 220% 0, -220% 0;
+    opacity: 0.0;
+  }
+}
+
+@keyframes reportDotPulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.65;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes reportTitleFlicker {
+  0%,
+  100% {
+    opacity: 0.96;
+  }
+  7% {
+    opacity: 0.82;
+  }
+  8% {
+    opacity: 0.96;
+  }
+  53% {
+    opacity: 0.9;
+  }
+  54% {
+    opacity: 1;
+  }
+}
+
+@keyframes hudCornersFlicker {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+  6% {
+    opacity: 0.55;
+  }
+  7% {
+    opacity: 0.78;
+  }
+  62% {
+    opacity: 0.68;
+  }
+  63% {
+    opacity: 0.86;
+  }
+}
+
+@keyframes neonSweep {
+  0% {
+    background-position: 0% 10%, 100% 80%, -140% 0;
+    opacity: 0.35;
+  }
+  35% {
+    opacity: 0.6;
+  }
+  55% {
+    background-position: 40% 0%, 70% 100%, 40% 0;
+    opacity: 0.45;
+  }
+  100% {
+    background-position: 100% 30%, 0% 60%, 140% 0;
+    opacity: 0.35;
+  }
+}
+
+.header-float {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 34px color-mix(in srgb, var(--accent) 22%, transparent);
+  animation: headerFloat 6.5s ease-in-out infinite;
+}
+
+@keyframes headerFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+.scanlines {
+  background: none;
+}
+
+.radar-sweep {
+  display: none;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateY(-110%);
+  }
+  to {
+    transform: translateY(110%);
+  }
+}
+
+.input-shell {
+  isolation: isolate;
+}
+
+.input-shell:focus-within {
+  border-color: color-mix(in srgb, var(--accent) 80%, #fff 20%);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.input-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent) 18%, transparent) 35%,
+    rgba(255, 255, 255, 0.08) 50%,
+    color-mix(in srgb, var(--accent) 18%, transparent) 65%,
+    transparent 100%
+  );
+  transform: translateX(-120%);
+}
+
+.input-shell:focus-within::after {
+  opacity: 1;
+  animation: inputScan 1.2s ease-in-out infinite;
+}
+
+@keyframes inputScan {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(160%);
+  }
+}
+
+.btn-neon {
+  transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+}
+
+.btn-neon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 26px color-mix(in srgb, var(--accent) 70%, transparent);
+  filter: saturate(1.15);
+}
+
+.btn-neon:active {
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.btn-ghost:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--accent) 50%, rgba(255, 255, 255, 0.2));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fog-layer,
+  .logo-flicker,
+  .noise-layer,
+  .ghost-layer,
+  .ghost-quote,
+  .header-float,
+  .app-shell::before,
+  .radar-sweep,
+  .matrix-layer {
+    animation: none !important;
+  }
+
+  .scanner-panel:hover::before,
+  .input-shell:focus-within::after {
+    animation: none !important;
+  }
+
+  .ghost-quote {
+    animation: none !important;
+  }
+}
+
