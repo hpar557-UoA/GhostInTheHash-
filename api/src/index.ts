@@ -22,6 +22,39 @@ const corsOrigins = (process.env.CORS_ORIGINS ?? "http://localhost:3000")
   .map((value) => value.trim())
   .filter(Boolean);
 
+const isAllowedOrigin = (origin: string): boolean => {
+  if (!origin) return true;
+  if (corsOrigins.includes("*")) return true;
+  if (corsOrigins.includes(origin)) return true;
+
+  let parsed: URL | null = null;
+  try {
+    parsed = new URL(origin);
+  } catch {
+    parsed = null;
+  }
+
+  for (const rule of corsOrigins) {
+    if (!rule.includes("*")) continue;
+
+    // Supported wildcard formats:
+    // - *.example.com
+    // - https://*.example.com
+    const hasProtocol = rule.includes("://");
+    const protocolPrefix = hasProtocol ? rule.slice(0, rule.indexOf("://") + 3) : "";
+    const hostPattern = hasProtocol ? rule.slice(protocolPrefix.length) : rule;
+
+    if (!hostPattern.startsWith("*.") || hostPattern.length <= 2) continue;
+    if (protocolPrefix && origin.startsWith(protocolPrefix) === false) continue;
+    if (!parsed) continue;
+
+    const suffix = hostPattern.slice(1); // ".example.com"
+    if (parsed.hostname.endsWith(suffix)) return true;
+  }
+
+  return false;
+};
+
 type LeakOsintEntry = {
   InfoLeak?: string;
   Data?: Array<Record<string, unknown>>;
@@ -152,13 +185,14 @@ app.use(
         return;
       }
 
-      if (corsOrigins.includes("*") || corsOrigins.includes(origin)) {
+      if (isAllowedOrigin(origin)) {
         callback(null, true);
         return;
       }
 
       callback(new Error(`CORS blocked for origin: ${origin}`));
     },
+    optionsSuccessStatus: 204,
   })
 );
 app.use(express.json());

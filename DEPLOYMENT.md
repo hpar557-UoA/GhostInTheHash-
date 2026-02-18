@@ -17,6 +17,8 @@ This repo is a monorepo:
    - `LEAKOSINT_API_URL` = `https://leakosintapi.com/` (optional)
    - `CORS_ORIGINS` = `http://localhost:3000` (for local) + your Pages URL once you deploy the web
      - Example: `http://localhost:3000,https://YOUR_PROJECT.pages.dev`
+       - If you see CORS errors on a Pages preview URL like `https://<hash>.YOUR_PROJECT.pages.dev`, add a wildcard:
+          - Example: `http://localhost:3000,https://YOUR_PROJECT.pages.dev,https://*.YOUR_PROJECT.pages.dev`
 
 After deploy, note the Render service URL:
 - Example: `https://ghostinthehash-api.onrender.com`
@@ -30,6 +32,8 @@ After deploy, note the Render service URL:
    - **Build output directory:** `dist`
 3. Add environment variable (Pages → Settings → Environment variables):
    - `VITE_API_URL` = `https://YOUR_RENDER_SERVICE_URL`
+
+Important: if `VITE_API_URL` is missing, the web app falls back to `http://localhost:5050` and will fail in production.
 
 Deploy.
 
