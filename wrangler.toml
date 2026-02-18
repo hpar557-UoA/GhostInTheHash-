@@ -1,0 +1,8 @@
+# Cloudflare Pages build output directory (BETA autodetect used by Pages)
+# This repository is a monorepo; the Vite site builds into web/dist.
+
+name = "ghostinthehash"
+compatibility_date = "2026-02-19"
+
+# Tell Cloudflare Pages to serve the built static assets instead of /web (source).
+pages_build_output_dir = "web/dist"
